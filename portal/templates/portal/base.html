@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Web Robot Portal{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- You can include other common stylesheets and scripts here -->
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Your navigation here -->
+            <ul>
+                <li><a href="{% url 'portal:home' %}">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'portal:logout' %}">Logout</a></li>
+                    <li><a href="{% url 'portal:dashboard' %}">Dashboard</a></li>
+                {% else %}
+                    <li><a href="{% url 'portal:login' %}">Login</a></li>
+                    <li><a href="{% url 'portal:register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Content will be overridden in child templates -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- Your footer here -->
+        <p>© 2023 Web Robot Portal</p>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    <!-- You can include other common JavaScript files here -->
+</body>
+</html>
