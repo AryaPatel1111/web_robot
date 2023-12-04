@@ -1,11 +1,16 @@
-{% extends "portal/base.html" %}
-{% block content %}
+<!-- login.html inside your portal/templates/portal directory -->
 
-<h2>Login</h2>
-<form method="post">
+{% extends 'portal/base.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" id="id_username" required>
+
+    <label for="id_password">Password:</label>
+    <input type="password" name="password" id="id_password" required>
+
     <button type="submit">Login</button>
 </form>
-
 {% endblock %}

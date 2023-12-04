@@ -25,9 +25,15 @@
     </header>
 
     <main>
-        {% block content %}
-        <!-- Content will be overridden in child templates -->
-        {% endblock %}
+        {% for message in messages %}
+    <div class="alert {{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block content %}
+    <!-- Content will be overridden in child templates -->
+    {% endblock %}
     </main>
 
     <footer>
